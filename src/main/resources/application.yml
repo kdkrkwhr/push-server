@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: local
+    include:
+      - redis
+  thymeleaf:
+    cache: false
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+    view-names: thymeleaf/*
+
+---
+# local development server
+spring:
+  profiles: local
+
+server: 
+  port: 8001
+logging:
+  config: classpath:logback-local.xml

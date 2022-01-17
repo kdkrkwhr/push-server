@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-messaging.js"></script>
+	<script th:inline="javascript">
+		const firebaseConfig = {
+			  apiKey: "AIzaSyClRifQIoEyg767dth7y0X_wKk3aCxkij8",
+			  authDomain: "fcm-web-74ae9.firebaseapp.com",
+			  projectId: "fcm-web-74ae9",
+			  storageBucket: "fcm-web-74ae9.appspot.com",
+			  messagingSenderId: "1089037401421",
+			  appId: "1:1089037401421:web:019577b1b2a8f6669c4b04",
+			  measurementId: "G-DR9TMKECJC"
+			};
+
+	    firebase.initializeApp(firebaseConfig);
+
+	    const messaging = firebase.messaging();
+	    messaging.requestPermission()
+	        .then(function() {
+	            return messaging.getToken();
+	        })
+	        .then(async function(token) {
+	        	console.log(token);
+	            messaging.onMessage(payload => {
+	                console.log(payload);
+	            })
+	        })
+	</script>
+</head>
+<body style="background: azure; text-align: center;">
+	<h2>FCM - TEST</h2>
+</body>
+</html>
